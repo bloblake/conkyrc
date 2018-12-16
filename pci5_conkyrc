@@ -122,46 +122,6 @@ ${template0 11 12}
 ${template1 11}
 ${template0 12 13}
 ${template1 12}
-${template0 13 14}
-${template1 13}
-${template0 14 15}
-${template1 14}
-${template0 15 16}
-${template1 15}
-${template0 16 17}
-${template1 16}
-${template0 17 2}
-${template1 17}
-${template0 18 3}
-${template1 18}
-${template0 19 4}
-${template1 19}
-${template0 20 5}
-${template1 20}
-${template0 21 6}
-${template1 21}
-${template0 22 7}
-${template1 22}
-${template0 23 8}
-${template1 23}
-${template0 24 9}
-${template1 24}
-${template0 25 10}
-${template1 25}
-${template0 26 11}
-${template1 26}
-${template0 27 12}
-${template1 27}
-${template0 28 13}
-${template1 28}
-${template0 29 14}
-${template1 29}
-${template0 30 15}
-${template1 30}
-${template0 31 16}
-${template1 31}
-${template0 32 17}
-${template1 32}
 # memory
 ${font Ubuntu Mono:bold:size=14}${color2}Memory${font Ubuntu Mono:bold:size=12}
 ${color0}mem:${color1} ${memperc}% $mem/$memmax
