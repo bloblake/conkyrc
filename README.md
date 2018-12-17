@@ -1,4 +1,4 @@
-# conky_configuration
+# my conkyrc
 ## install
 apt install conky
 cp conkyrc to ~/.conkyrc
@@ -7,3 +7,5 @@ man conky
 ## preview
 ### pci9
 ![Image text](./images/pci9_conky.png)
+### pci9_2
+![Image text](./images/pci9_2_conky.png)
