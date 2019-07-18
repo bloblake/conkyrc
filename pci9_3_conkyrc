@@ -1,0 +1,188 @@
+-- vim: ts=4 sw=4 noet ai cindent syntax=lua
+--[[
+Conky, a system monitor, based on torsmo
+
+Any original torsmo code is licensed under the BSD license
+
+All code written since the fork of torsmo is licensed under the GPL
+
+Please see COPYING for details
+
+Copyright (c) 2004, Hannu Saransaari and Lauri Hakkarainen
+Copyright (c) 2005-2012 Brenden Matthews, Philip Kovacs, et. al. (see AUTHORS)
+All rights reserved.
+
+This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+You should have received a copy of the GNU General Public License
+along with this program.  If not, see <http://www.gnu.org/licenses/>.
+]]
+
+conky.config = {
+    alignment = 'top_right',
+    background = true,
+    border_width = 1,
+    color0 = '467f77',
+    color1 = 'grey60',
+    color2 = '8f4c30',
+    cpu_avg_samples = 2,
+    default_bar_height = 6,
+    default_bar_width = 0,
+    default_gauge_height = 25,
+    default_gauge_width = 40,
+    default_graph_height = 25,
+    default_graph_width = 0,
+	default_color = '303030',
+    default_outline_color = 'white',
+    default_shade_color = 'white',
+    diskio_avg_samples = 2,
+    double_buffer = true,
+    draw_borders = false,
+    draw_graph_borders = true,
+    draw_outline = false,
+    draw_shades = false,
+    font = 'Ubuntu Mono:bold:size=12',
+    format_human_readable = true,
+    gap_x = 0,
+    gap_y = 35,
+    minimum_height = 100,
+	minimum_width = 100,
+    net_avg_samples = 2,
+    no_buffers = true,
+    out_to_console = false,
+    out_to_stderr = false,
+    extra_newline = false,
+    own_window = true,
+    own_window_transparent = false,
+    own_window_class = 'Conky',
+    own_window_colour = '000000',
+    own_window_hints = 'undecorated','below','sticky','skip_taskbar','skip_pager',
+    own_window_type = 'normal',
+    short_units = true,
+    show_graph_range = false,
+    show_graph_scale = false,
+    stippled_borders = 0,
+    temperature_unit = 'celsius',
+    times_in_seconds = true,
+    top_cpu_separate = false,
+    top_name_verbose = true,
+    top_name_width = 18,
+    update_interval = 1.0,
+    uppercase = false,
+    use_spacer = 'none',
+    use_xft = true,
+    template0=[[${color0}\1${color1}${goto 30}${cpu cpu\1}%${goto 60}${freq \1}MHz${goto 180}${color0}\2${goto 210}${color1}${cpu cpu\2}%${goto 240}${freq \2}MHz${goto 320}${hwmon 1 temp \3}c]],
+    template1=[[${color1}${cpubar cpu\1 10,170 303030 467f77}${goto 180}${cpubar cpu\2 10,170 303030 467f77}]]
+};
+
+conky.text = [[
+${color2}${goto 20}${voffset 0}${font Ubuntu Mono:bold:size=36}${time %H:%M:%S}${font Ubuntu Mono:bold:size=12}
+${color0}${goto 5}Date:${goto 80}${color1}${time %A %d %b. %Y}
+${color0}${goto 5}UTC:${goto 80}${color1}$utime
+${color0}${goto 5}PT:${goto 80}${color1}${tztime US/Pacific-New}
+${color0}${goto 5}Distro:${goto 80}${color1}Ubuntu 18.04.1 bionic
+${color0}${goto 5}Kernel:${goto 80}${color1}$kernel
+${color0}${goto 5}Hostname:${goto 80}${color1}$nodename
+${color0}${goto 5}Uptime:${goto 80}${color1}$uptime
+${color0}${goto 5}Load:${goto 80}${color1}$loadavg
+${color0}${goto 5}Process/Thread: ${color1}$processes/$threads ${color0}Running: ${color1}$running_processes/$running_threads
+# cpu
+${font Ubuntu Mono:bold:size=14}${color2}i9-7960X@2.80GHz${font Ubuntu Mono:bold:size=12}
+${color0}all:${color1}${goto 70}${cpu cpu0}%${goto 100}${freq 0}MHz${goto 180}${hwmon 1 temp 1}c
+${color1}${cpugraph cpu0 40,350 303030 467f77}
+${color1}${cpubar cpu0 10,350 303030 467f77}
+${template0 1 17 2}
+${template1 1 17}
+${template0 2 18 3}
+${template1 2 18}
+${template0 3 19 4}
+${template1 3 19}
+${template0 4 20 5}
+${template1 4 20}
+${template0 5 21 6}
+${template1 5 21}
+${template0 6 22 7}
+${template1 6 22}
+${template0 7 23 8}
+${template1 7 23 }
+${template0 8 24 9}
+${template1 8 24}
+${template0 9 25 10}
+${template1 9 25}
+${template0 10 26 11}
+${template1 10 26}
+${template0 11 27 12}
+${template1 11 27}
+${template0 12 28 13}
+${template1 12 28}
+${template0 13 29 14}
+${template1 13 29 }
+${template0 14 30 15}
+${template1 14 30}
+${template0 15 31 16}
+${template1 15 31}
+${template0 16 32 17}
+${template1 16 32}
+# memory
+${font Ubuntu Mono:bold:size=14}${color2}Memory${font Ubuntu Mono:bold:size=12}
+${color0}mem:${color1} ${memperc}% $mem/$memmax
+${memgraph 40,350 303030 467f77}
+${membar 10,350}
+${color0}buffer:${color1} $buffers${goto 170}${color0}cached :${color1} $cached
+${memwithbuffersbar 10,350}
+# gpu
+${font Ubuntu Mono:bold:size=14}${color2}${nvidia modelname}
+${font Ubuntu Mono:bold:size=12}${color0}gpu:${color1}${goto 55}${nvidia gpuutil}%${goto 85}${nvidia gpufreqcur}MHz${goto 145}${nvidia gpufreqmin}MHz-${nvidia gpufreqmax}MHz ${nvidia gputemp}c ${nvidia fanspeed}rpm
+${nvidiagraph gpufreqcur 40,350 303030 467f77 0}
+${nvidiabar 10,350 gpufreqcur}
+${color0}mem:${color1}${goto 55}${nvidia memutil}%${goto 145}${nvidia memused}M-${nvidia memmax}M
+${nvidiagraph memused 40,350 303030 467f77 0}
+${nvidiabar 10,350 memused}
+${color0}freq:${color1}${goto 55}${nvidia memfreqcur}MHz${goto 145}${nvidia memfreqmin}MHz-${nvidia memfreqmax}MHz
+${nvidiagraph memfreqcur 40,350 303030 467f77 0}
+${nvidiabar 10,350 memfreqcur}
+${color0}bandwidth:${color1} ${nvidia membwutil}%
+${nvidiabar 10,350 membwutil}
+${color0}mtr:${color1}${goto 55}${nvidia mtrfreqcur}MHz${goto 145}${nvidia mtrfreqmin}MHz-${nvidia mtrfreqmax}MHz
+${color0}video:${color1} ${nvidia videoutil}%${goto 170}${color0}pcie: ${color1}${nvidia pcieutil}%
+# disk
+${font Ubuntu Mono:bold:size=14}${color2}Disk${font Ubuntu Mono:bold:size=12}${color0}${goto 100}mount${goto 225}read${goto 285}write
+${color0}nvme0n1p1${goto 100}${color1}/${goto 225}${diskio_read /dev/nvme0n1p1}${goto 285}${diskio_write /dev/nvme0n1p1}
+${diskiograph_read /dev/nvme0n1p1 40,170 303030 467f77}${goto 180}${diskiograph_write /dev/nvme0n1p1 40,170 303030 467f77}
+${color0}nvme1n1p2${goto 100}${color1}nvme1n1p2 /opt${goto 225}${diskio_read /dev/nvme1n1p2}${goto 285}${diskio_write /dev/nvme1n1p2}
+${diskiograph_read /dev/nvme1n1p2 40,170 303030 467f77}${goto 180}${diskiograph_write /dev/nvme1n1p2 40,170 303030 467f77}
+${color0}sda${goto 100}${color1}/pp /ecs${goto 225}${diskio_read /dev/sda}${goto 285}${diskio_write /dev/sda}
+${diskiograph_read /dev/sda 40,170 303030 467f77}${goto 180}${diskiograph_write /dev/sda 40,170 303030 467f77}
+# network
+${font Ubuntu Mono:bold:size=14}${color2}Network${font Ubuntu Mono:bold:size=12}${color0}${goto 100}ipv4${goto 225}down${goto 285}up${font Ubuntu Mono:bold:size=12}
+${color0}eno1${color1}${goto 100}${addr eno1}${goto 225}${downspeed eno1}${goto 285}${upspeed eno1}
+${downspeedgraph eno1 40,170 303030 467f77}${goto 180}${upspeedgraph eno1 40,170 303030 467f77}
+${color0}lo${color1}${goto 100}${addr lo}${goto 225}${downspeed lo}${goto 285}${upspeed lo}
+${downspeedgraph lo 40,170 303030 467f77}${goto 180}${upspeedgraph lo 40,170 303030 467f77}
+# top
+${font Ubuntu Mono:bold:size=14}${color2}Top Cpu${font Ubuntu Mono:bold:size=12}${color0}${goto 170}pid${goto 220}cpu%${goto 285}mem${color1}
+${color0}${top name 1}${color1}${goto 170}${top pid 1}${goto 220}${top cpu 1}${goto 285}${top mem_res 1}
+${color0}${top name 2}${color1}${goto 170}${top pid 2}${goto 220}${top cpu 2}${goto 285}${top mem_res 2}
+${color0}${top name 3}${color1}${goto 170}${top pid 3}${goto 220}${top cpu 3}${goto 285}${top mem_res 3}
+${color0}${top name 4}${color1}${goto 170}${top pid 4}${goto 220}${top cpu 4}${goto 285}${top mem_res 4}
+${color0}${top name 5}${color1}${goto 170}${top pid 5}${goto 220}${top cpu 5}${goto 285}${top mem_res 5}${font Ubuntu Mono:bold:size=14}
+${color2}Top Mem${font Ubuntu Mono:bold:size=12}${color0}${goto 170}pid${goto 220}cpu%${goto 285}mem${color1}
+${color0}${top_mem name 1}${color1}${goto 170}${top_mem pid 1}${goto 220}${top_mem cpu 1}${goto 285}${top_mem mem_res 1}
+${color0}${top_mem name 2}${color1}${goto 170}${top_mem pid 2}${goto 220}${top_mem cpu 2}${goto 285}${top_mem mem_res 2}
+${color0}${top_mem name 3}${color1}${goto 170}${top_mem pid 3}${goto 220}${top_mem cpu 3}${goto 285}${top_mem mem_res 3}
+${color0}${top_mem name 4}${color1}${goto 170}${top_mem pid 4}${goto 220}${top_mem cpu 4}${goto 285}${top_mem mem_res 4}
+${color0}${top_mem name 5}${color1}${goto 170}${top_mem pid 5}${goto 220}${top_mem cpu 5}${goto 285}${top_mem mem_res 5}${font Ubuntu Mono:bold:size=14}
+${color2}Top IO${font Ubuntu Mono:bold:size=12}${color0}${goto 170}pid${goto 225}read${goto 285}write${color1}
+${color0}${top_io name 1}${color1}${goto 170}${top_io pid 1}${goto 225}${top_io io_read 1}${goto 285}${top_io io_write 1}
+${color0}${top_io name 2}${color1}${goto 170}${top_io pid 2}${goto 225}${top_io io_read 2}${goto 285}${top_io io_write 2}
+${color0}${top_io name 3}${color1}${goto 170}${top_io pid 3}${goto 225}${top_io io_read 3}${goto 285}${top_io io_write 3}
+${color0}${top_io name 4}${color1}${goto 170}${top_io pid 4}${goto 225}${top_io io_read 4}${goto 285}${top_io io_write 4}
+${color0}${top_io name 5}${color1}${goto 170}${top_io pid 5}${goto 225}${top_io io_read 5}${goto 285}${top_io io_write 5}
+]]
