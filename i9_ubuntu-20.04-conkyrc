@@ -89,7 +89,7 @@ conky.text = [[
 ${color2}${goto 20}${voffset 0}${font Ubuntu Mono:bold:size=36}${time %H:%M:%S}${font Ubuntu Mono:bold:size=12}
 ${color0}${goto 5}Date:${goto 80}${color1}${time %A %d %b. %Y}
 ${color0}${goto 5}UTC:${goto 80}${color1}$utime
-${color0}${goto 5}PT:${goto 80}${color1}${tztime US/Pacific-New}
+${color0}${goto 5}PST:${goto 80}${color1}${tztime US/Pacific}
 ${color0}${goto 5}Distro:${goto 80}${color1}Ubuntu 20.04 focal
 ${color0}${goto 5}Kernel:${goto 80}${color1}$kernel
 ${color0}${goto 5}Hostname:${goto 80}${color1}$nodename
