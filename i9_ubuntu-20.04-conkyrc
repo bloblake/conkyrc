@@ -81,7 +81,7 @@ conky.config = {
     uppercase = false,
     use_spacer = 'none',
     use_xft = true,
-    template0=[[${color0}\1${color1}${goto 30}${cpu cpu\1}%${goto 60}${freq \1}MHz${goto 180}${color0}\2${goto 210}${color1}${cpu cpu\2}%${goto 240}${freq \2}MHz${goto 320}${hwmon 1 temp \3}c]],
+    template0=[[${color0}\1${color1}${goto 30}${cpu cpu\1}%${goto 60}${freq \1}MHz${goto 180}${color0}\2${goto 210}${color1}${cpu cpu\2}%${goto 240}${freq \2}MHz${goto 320}${hwmon 4 temp \3}c]],
     template1=[[${color1}${cpubar cpu\1 10,170 303030 467f77}${goto 180}${cpubar cpu\2 10,170 303030 467f77}]]
 };
 
@@ -98,7 +98,7 @@ ${color0}${goto 5}Load:${goto 80}${color1}$loadavg
 ${color0}${goto 5}Process/Thread: ${color1}$processes/$threads ${color0}Running: ${color1}$running_processes/$running_threads
 # cpu
 ${font Ubuntu Mono:bold:size=14}${color2}i9-7960X@2.80GHz${font Ubuntu Mono:bold:size=12}
-${color0}all:${color1}${goto 70}${cpu cpu0}%${goto 100}${freq 0}MHz${goto 180}${hwmon 1 temp 1}c
+${color0}all:${color1}${goto 70}${cpu cpu0}%${goto 100}${freq 0}MHz${goto 180}${hwmon 4 temp 1}c
 ${color1}${cpugraph cpu0 40,350 303030 467f77}
 ${color1}${cpubar cpu0 10,350 303030 467f77}
 ${template0 1 17 2}
@@ -161,12 +161,12 @@ ${color0}nvme0n1p1${goto 100}${color1}/${goto 225}${diskio_read /dev/nvme0n1p1}$
 ${diskiograph_read /dev/nvme0n1p1 40,170 303030 467f77}${goto 180}${diskiograph_write /dev/nvme0n1p1 40,170 303030 467f77}
 ${color0}nvme1n1p1${goto 100}${color1}/nv${goto 225}${diskio_read /dev/nvme1n1p1}${goto 285}${diskio_write /dev/nvme1n1p1}
 ${diskiograph_read /dev/nvme1n1p1 40,170 303030 467f77}${goto 180}${diskiograph_write /dev/nvme1n1p1 40,170 303030 467f77}
-${color0}sda${goto 100}${color1}/hdd${goto 225}${diskio_read /dev/sda}${goto 285}${diskio_write /dev/sda}
-${diskiograph_read /dev/sda 40,170 303030 467f77}${goto 180}${diskiograph_write /dev/sda 40,170 303030 467f77}
 # network
 ${font Ubuntu Mono:bold:size=14}${color2}Network${font Ubuntu Mono:bold:size=12}${color0}${goto 100}ipv4${goto 225}down${goto 285}up${font Ubuntu Mono:bold:size=12}
 ${color0}eno1${color1}${goto 100}${addr eno1}${goto 225}${downspeed eno1}${goto 285}${upspeed eno1}
 ${downspeedgraph eno1 40,170 303030 467f77}${goto 180}${upspeedgraph eno1 40,170 303030 467f77}
+${color0}cscotun0${color1}${goto 100}${addr cscotun0}${goto 225}${downspeed cscotun0}${goto 285}${upspeed cscotun0}
+${downspeedgraph cscotun0 40,170 303030 467f77}${goto 180}${upspeedgraph cscotun0 40,170 303030 467f77}
 ${color0}lo${color1}${goto 100}${addr lo}${goto 225}${downspeed lo}${goto 285}${upspeed lo}
 ${downspeedgraph lo 40,170 303030 467f77}${goto 180}${upspeedgraph lo 40,170 303030 467f77}
 # top
